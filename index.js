@@ -18,8 +18,13 @@ app.get("/",(req,res) => {
  .select()
  .from("venues")
  .then((result) => {
-  console.log(result);
-  res.send(result);
+ let html = "<body><ul>";
+ for (let i=0;i<result.length;i++) {
+  html += "<li>" + result[i].location + "</li>";
+ }
+  html += "</body>"
+  res.send(html);
  }); 
 });
 app.listen(3000);
+
